@@ -1,0 +1,185 @@
+
+<div class="container" style="width: 50%;">
+
+<form [formGroup]="formValue" style="margin-top: 20px;">
+  <fieldset >
+    <legend><h1>Add Employee</h1></legend>
+    <div  style="margin-left: 60%;" class ="form-text text-danger" >
+      <a class=" btn btn-danger" routerLink="/Emp/all-emp">Back to home</a>
+   </div>
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">First Name</label>
+      <input type="text" class="form-control" formControlName="Name" aria-describedby="emailHelp">
+
+      <div class ="form-text text-danger" *ngIf="name.errors?.['required'] && (name.touched || name.dirty)">
+        Name is Required
+      </div>
+      <!-- <div  class ="form-text text-danger" *ngIf="name.errors?.['pattern'] && (name.touched || name.dirty)">
+        Name is Start with Alphabetical word
+      </div> -->
+      <div  class ="form-text text-danger" *ngIf="name.errors?.['minlength'] && (name.touched || name.dirty)">
+         length should be greater then 2
+      </div>
+    </div>
+
+
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Last Name</label>
+      <input type="text" class="form-control" formControlName="LastName" aria-describedby="emailHelp">
+      <div class ="form-text text-danger" *ngIf="lname.errors?.['required'] && (lname.touched || lname.dirty)">
+        Last Name is Required
+      </div>
+      <!-- <div  class ="form-text text-danger" *ngIf="lname.errors?.['pattern'] && (lname.touched || lname.dirty)">
+        Last Name Start with Alphabetical word
+      </div> -->
+      <div  class ="form-text text-danger" *ngIf="lname.errors?.['minlength'] && (lname.touched || lname.dirty)">
+         length should be greater then 2
+      </div>
+      
+    </div>
+
+
+
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email</label>
+    <input type="email" class="form-control" formControlName="Email" aria-describedby="emailHelp">
+    <div class ="form-text text-danger" *ngIf="email.errors?.['required'] && (email.touched || email.dirty)">
+      Email is Required
+    </div>
+    <div class ="form-text text-danger" *ngIf="email.errors?.['email'] && (email.touched || email.dirty)">
+      Email is not Valid
+    </div>
+  </div>
+
+
+
+
+ 
+  <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Phone No</label>
+      <input type="text" class="form-control" formControlName="Phone" aria-describedby="emailHelp">
+      <div class ="form-text text-danger" *ngIf="phone.errors?.['required'] && (phone.touched || phone.dirty)">
+        Phone no  is Required
+      </div>
+      <div class ="form-text text-danger" *ngIf="phone.errors?.['minlength'] && (phone.touched || phone.dirty)">
+        Phone No length is less than 10 digit
+      </div>
+      <div class ="form-text text-danger" *ngIf="phone.errors?.['maxlength'] && (phone.touched || phone.dirty)">
+        Phone No length is Greater than 10 digit
+      </div>
+      <div class ="form-text text-danger" *ngIf="phone.errors?.['pattern'] && (phone.touched || phone.dirty)">
+       Enter Valid Phone Number
+      </div>
+  </div> 
+
+
+
+
+  <p>
+    
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Add Family Detail
+    </button>
+  </p>
+  
+
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body" >
+      <button class="btn btn-danger" (click)="addmore()">Add</button>
+     
+      <div formArrayName="moredata" *ngFor="let m of moredata.controls; let i=index">
+          <div [formGroupName]="i">      
+              
+
+              
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Name</label>
+              <input type=text class="form-control"  placeholder="Enter Family Member Age" formControlName="FName" aria-describedby="emailHelp">
+            </div>
+
+
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Age</label>
+              <input type=text class="form-control"  placeholder="Enter Family Member Age" formControlName="FAge" aria-describedby="emailHelp">
+            </div>
+  
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Realtion</label>
+              <input type=text class="form-control"  placeholder="Relation with Family Member" formControlName="FName" aria-describedby="emailHelp">
+            </div>
+  
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Occupation</label>
+              <input type=text class="form-control"  placeholder="Enter Family Member Occupation" formControlName="FOccupation" aria-describedby="emailHelp">
+            </div>
+            <button (click)="removeSkill(i)" class="btn btn-warning">Remove</button>
+  
+             
+          </div>
+         
+  
+      </div>
+  
+     </div>
+  </div>
+
+
+
+
+
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Password</label>
+      <input type=password class="form-control"  formControlName="Password" aria-describedby="emailHelp">
+
+      <div class ="form-text text-danger" *ngIf="password.errors?.['required'] && (password.touched || password.dirty)">
+        Password is Required
+      </div>
+    </div>
+
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Select Role</label>
+    <div class="form-check">
+      <input  type="radio"   value="Admin" formControlName="Role"><b>Admin</b><br>
+      <input  type="radio"    value="Editor" formControlName="Role"><b>Editor</b><br>
+      <input  type="radio"    value="Viewer" formControlName="Role"><b>Viewer</b><br>
+      <div class ="form-text text-danger" *ngIf="role.errors?.['required'] && (role.touched || role.dirty)">
+        Please Select the Role
+      </div>
+    </div>
+  </div>
+
+
+  <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+    <label for="exampleInputEmail1" class="form-label">Joining Date</label>
+    <input placeholder="Select date" type="date" id="example" class="form-control" formControlName="JDate" >
+    
+    <i class="fas fa-calendar input-prefix"></i>
+    <div class ="form-text text-danger" *ngIf="jdate.errors?.['required'] && (jdate.touched || jdate.dirty)">
+      Date of Joining Id  is Required
+    </div>
+  </div>
+    
+
+
+
+  <img [src]="Src" height="200px">
+  <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+    <label for="exampleInputEmail1" class="form-label">Uploade Image</label>
+    <input placeholder="selectImage" type="file" id="img" class="form-control" (change)="onSelect($event)" >
+    
+    
+  </div>
+  
+  <button style="margin-top: 50px;"  type="submit" class="btn btn-primary" (click)="PostData()"   [disabled]="formValue.invalid">Submit</button>
+  <button style="margin-top: 50px; margin-left: 20px;"  type="submit" class="btn btn-primary" (click)="Reset()"   >Reset</button>
+
+  </fieldset>
+</form>
+
+
+</div>

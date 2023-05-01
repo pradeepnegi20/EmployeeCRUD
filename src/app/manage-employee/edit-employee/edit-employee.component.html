@@ -1,0 +1,204 @@
+<!-- <h1>Hello</h1>
+<p *ngIf="Tshow"> jdfkldsfldsh</p>
+<div >
+<form [formGroup]="formValue1" style="margin-top: 20px;">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">First Name</label>
+      <input type="text" class="form-control" formControlName="Name" aria-describedby="emailHelp">
+    </div>
+
+
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Last Name</label>
+      <input type="text" class="form-control" formControlName="LastName" aria-describedby="emailHelp">
+    </div>
+
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email</label>
+    <input type="email" class="form-control" formControlName="Email" aria-describedby="emailHelp">
+  </div>
+
+
+ 
+  <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Phone No</label>
+      <input type="text" class="form-control" formControlName="Phone" aria-describedby="emailHelp">
+  </div> 
+
+
+
+    <p>
+      <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+       Family Information
+      </a><i class="bi bi-plus-square-fill"></i>
+      </p>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+         
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Name Of Family Member</label>
+      <input type="text" class="form-control" formControlName="FamilyName" aria-describedby="emailHelp">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Relation</label>
+      <input type="text" class="form-control" formControlName="FamilyRelation" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Occupation</label>
+      <input type="text" class="form-control" formControlName="FamilyOccupation" aria-describedby="emailHelp">
+     </div>
+
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Age</label>
+      <input type=number class="form-control"  formControlName="Age" aria-describedby="emailHelp">
+    </div>
+        </div>
+    </div>
+
+    
+
+
+
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Password</label>
+      <input type=password class="form-control"  formControlName="Password" aria-describedby="emailHelp">
+    </div>
+
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Select Role</label>
+    <!-- <div class="form-check" *ngFor="let d of Role">
+      <input  type="radio" name="flexRadioDefault"   value="{{d}}" (change)="radiochange($event)">
+      <i>{{d}}</i>
+    </div> 
+  </div>
+  <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+    <label for="exampleInputEmail1" class="form-label">Joining Date</label>
+    <input placeholder="Select date" type="date" id="example" class="form-control" formControlName="JDate" >
+    
+    <i class="fas fa-calendar input-prefix"></i>
+  </div>
+</form>
+</div> -->
+<div class="container" style="width: 50%;" >
+<form [formGroup]="EditForm">
+<fieldset>
+<legend><h1>Edit</h1></legend>
+<div  style="margin-left: 60%;" class ="form-text text-danger" >
+  <a class=" btn btn-danger" routerLink="/Emp/all-emp">Back to home</a>
+</div>
+<div class="mb-3">
+  <label for="exampleInputEmail1" class="form-label">First Name</label>
+  <input type="text" class="form-control" formControlName="Name" aria-describedby="emailHelp">
+</div>
+
+
+
+<div class="mb-3">
+  <label for="exampleInputEmail1" class="form-label">Last Name</label>
+  <input type="text" class="form-control" formControlName="LastName" aria-describedby="emailHelp">
+</div>
+
+
+<div class="mb-3">
+<label for="exampleInputEmail1" class="form-label">Email</label>
+<input type="email" class="form-control" formControlName="Email" aria-describedby="emailHelp">
+</div>
+
+
+<div class="mb-3">
+  <label for="exampleInputEmail1" class="form-label">Employee Id</label>
+  <input type="email" class="form-control" formControlName="Id" aria-describedby="emailHelp">
+  </div>
+
+<div class="mb-3">
+  <label for="exampleInputEmail1" class="form-label">Phone No</label>
+  <input type="text" class="form-control" formControlName="Phone" aria-describedby="emailHelp">
+</div> 
+
+
+<p>
+    
+  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Edit Family Detail
+  </button>
+</p>
+
+
+<div class="collapse" id="collapseExample">
+  <div class="card card-body" >
+    <button class="btn btn-danger" (click)="addmore()">Add</button>
+   
+    <div formArrayName="FamilyInfo" *ngFor="let m of FamilyInfo.controls; let i=index">
+        <div [formGroupName]="i">      
+            
+
+            
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Name</label>
+            <input type=text class="form-control"  placeholder="Enter Family Member Age" formControlName="FName" aria-describedby="emailHelp">
+          </div>
+
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Age</label>
+            <input type=text class="form-control"  placeholder="Enter Family Member Age" formControlName="FAge" aria-describedby="emailHelp">
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Realtion</label>
+            <input type=text class="form-control"  placeholder="Relation with Family Member" formControlName="FRelation" aria-describedby="emailHelp">
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Occupation</label>
+            <input type=text class="form-control"  placeholder="Enter Family Member Occupation" formControlName="FOccupation" aria-describedby="emailHelp">
+          </div>
+          <button  class="btn btn-warning"  (click)="removeSkill(i)">Remove</button>
+
+           
+        </div>
+       
+
+    </div>
+
+   </div>
+</div>  
+
+<div class="form-check">
+  <input  type="radio"   value="Admin" formControlName="Role"  ><b>Admin</b><br>
+  <input  type="radio"    value="Editor" formControlName="Role"  ><b>Editor</b><br>
+  <input  type="radio"    value="Viewer" formControlName="Role"  ><b>Viewer</b><br>
+  
+</div>
+<div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+  <label for="exampleInputEmail1" class="form-label">Joining Date</label>
+  <input placeholder="Select date" type="date" id="example" class="form-control" formControlName="JDate" >
+</div>
+
+
+<img [src]="Src" height="200px">
+<div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+  <label for="exampleInputEmail1" class="form-label">Uploade Image</label>
+<input placeholder="selectImage" type="file" id="img" class="form-control" (change)="onSelect($event)" > 
+ 
+</div>
+
+
+<div class="mb-3">
+  <label for="exampleInputEmail1" class="form-label">Password</label>
+  <input type=password class="form-control"  formControlName="Password" aria-describedby="emailHelp">
+</div>
+
+</fieldset>
+</form>
+
+
+<button style="margin-top: 50px;"  type="submit" class="btn btn-primary" (click)="UpdateData()"   >Submit</button>
+
+</div>

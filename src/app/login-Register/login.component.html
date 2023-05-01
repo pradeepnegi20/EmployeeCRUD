@@ -1,0 +1,179 @@
+
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+  </head>
+<body>
+<div class="container" style="width: 50%;">
+  
+<form  [formGroup]="LoginForm" style="margin-top: 25px;">
+  <fieldset>
+    <legend><h1>Login</h1></legend>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" class="form-control"  placeholder="Enter Your Email Id" formControlName="Email">
+      
+      <div class ="form-text text-danger" *ngIf="email.errors?.['required'] && (email.touched || email.dirty)">
+        Email is required
+        </div>
+        <div class ="form-text text-danger" *ngIf="email.errors?.['email'] && (email.touched || email.dirty)">
+          Email is Invalid
+          </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" placeholder="Enter Your Password" formControlName="Password">
+      <div class ="form-text text-danger" *ngIf="email.errors?.['required'] && (email.touched || email.dirty)">
+        Password is required
+        </div>
+    </div>
+    
+    <button type="submit" class="btn btn-primary" [disabled]="LoginForm.invalid" (click)="Login()">Submit</button>
+    </fieldset>
+  </form>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Register
+  </button>
+  
+  <!-- Modal -->
+  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Register User</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+
+            <form>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">First Name</label>
+                <input type="text" class="form-control" formControlName="Name" aria-describedby="emailHelp">
+              </div>
+
+
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Last Name</label>
+                <input type="text" class="form-control" formControlName="LastName" aria-describedby="emailHelp">
+              </div>
+
+
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email</label>
+              <input type="email" class="form-control" formControlName="Email" aria-describedby="emailHelp">
+            </div>
+
+
+           
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Phone No</label>
+                <input type="text" class="form-control" formControlName="Phone" aria-describedby="emailHelp">
+            </div> 
+
+
+
+              <p>
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                 Family Information
+                </a><i class="bi bi-plus-square-fill"></i>
+                </p>
+                <div class="collapse" id="collapseExample">
+                  <div class="card card-body">
+                   
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Name Of Family Member</label>
+                <input type="text" class="form-control" formControlName="FamilyName" aria-describedby="emailHelp">
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Relation</label>
+                <input type="text" class="form-control" formControlName="FamilyRelation" aria-describedby="emailHelp">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Occupation</label>
+                <input type="text" class="form-control" formControlName="FamilyOccupation" aria-describedby="emailHelp">
+               </div>
+
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Age</label>
+                <input type=number class="form-control"  formControlName="Age" aria-describedby="emailHelp">
+              </div>
+                  </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Employee Id</label>
+                <input type=text class="form-control"  placeholder="Enter Employee Id"formControlName="EmpId" aria-describedby="emailHelp">
+              </div>
+
+
+
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Password</label>
+                <input type=password class="form-control"  formControlName="Password" aria-describedby="emailHelp">
+              </div>
+
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Select Role</label>
+              <div class="form-check" *ngFor="let d of Role">
+                <input  type="radio" name="flexRadioDefault"   value="{{d}}" (change)="radiochange($event)">
+                <i>{{d}}</i>
+              </div>
+            </div>
+
+
+            <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+              <label for="exampleInputEmail1" class="form-label">Joining Date</label>
+              <input placeholder="Select date" type="date" id="example" class="form-control" formControlName="JDate" >
+              
+              <i class="fas fa-calendar input-prefix"></i>
+            </div>
+              
+            
+            <button style="margin-top: 50px;"  type="submit" class="btn btn-primary" (click)="PostData()">Submit</button>
+          </form>
+
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div> -->
+  
+
+<script>
+  $('.datepicker').datepicker({
+  inline: true
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+  

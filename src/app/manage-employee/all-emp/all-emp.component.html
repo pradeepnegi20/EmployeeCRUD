@@ -1,0 +1,74 @@
+
+<div >
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid" style="background-color: blue;height: 80px;" >
+      <h1 style="color: white; margin-left: 20px;">Employe Management System</h1>
+      <div class="d-flex" >
+       
+        
+      </div>
+      <form class="d-flex" >
+       
+        <button type="button" class="btn btn-success" (click)="Logout()">LogOut</button>
+      </form>
+    </div>
+    
+   
+      
+    
+  
+  </nav>
+
+</div>
+
+
+
+
+
+
+<div class="container">
+  <button type="button" class="btn btn-primary"    (click)="Add()">AddEmployee</button>
+
+
+  <div style="width: 30%; margin-top: 20px;"  class="d-flex">
+    <input type="text" placeholder="Enter First Name"  class="form-control" name="FirstName" [(ngModel)]="FirstName" (ngModelChange)="Search()">
+  </div>
+
+
+
+
+
+
+
+  <table class="table" style=" margin-top: 50px;">
+    <thead>
+      <tr style="align-items: center;">
+        <th scope="col">Employee Id</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Created On</th>
+        <th scope="col">Joining Date</th>
+        <th scope="col">Profile Pic</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of data |  paginate: { itemsPerPage: 3, currentPage: pages }">
+       <td>{{d.Id}}</td>
+       <td>{{d.Name}}</td>
+       <td>{{d.LastName}}</td>
+       <td>{{d.CreatedDate}}</td>
+       <td>{{d.JDate}}</td>
+       <th><img src="{{d.Image}}" height="100px"></th>
+       <td><a routerLink="/Emp/edit/{{d.id}}" class="btn btn-secondary"> Edit</a>
+        <button style="margin-left: 10px;" type="button"  class="btn btn-danger"  (click)="Delete(d.id)">Delete</button>
+       </td>
+      </tr>
+      </tbody>  
+    </table>
+    <pagination-controls (pageChange)="pages = $event"></pagination-controls>
+
+    
+
+
+</div>
